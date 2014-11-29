@@ -4,11 +4,11 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Browser stack button : ">
+    <meta name="description" content="Christopher Mitchell : ">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>Browser stack button</title>
+    <title>Christopher Mitchell</title>
   </head>
 
   <body>
@@ -18,7 +18,7 @@
         <header class="inner">
           <a id="forkme_banner" href="https://github.com/cmitchusa/browser_stack_button">View on GitHub</a>
 
-          <h1 id="project_title">Browser stack button</h1>
+          <h1 id="project_title">Christopher Mitchell</h1>
           <h2 id="project_tagline"></h2>
 
             <section id="downloads">
@@ -31,44 +31,136 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <h1>
+<a id="browserstackbutton" class="anchor" href="#browserstackbutton" aria-hidden="true"><span class="octicon octicon-link"></span></a>BrowserStackButton</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>BrowserStackButton adds a button to your page to allow you to quickly and
+easily view the page you are looking at in BrowserStack. It is currently set up
+to work on a Rails project but could probably be used in Sinatra or the like.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<pre><code>gem 'browser_stack_button'
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>And then execute:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<p>Or install it yourself as:</p>
+
+<pre><code>$ gem install browser_stack_button
+</code></pre>
+
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h2>
+
+<p>Put your configuration in an initializer:</p>
+
+<p><code>config/initializers/browser_stack_button.rb</code></p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-s3">BrowserStackButton</span>.configure <span class="pl-k">do </span>|<span class="pl-vo">config</span>|
+  <span class="pl-c"># ...</span>
+<span class="pl-k">end</span></pre></div>
 
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a id="browser-configuration" class="anchor" href="#browser-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browser configuration</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>By default BrowserStackButton will not render any buttons for any browsers.
+You need to set them up as described below.
+Refer to the <a href="http://www.browserstack.com/integrations#integration-parameters">Browser Stack API documentation</a>
+for what each setting means.</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<h4>
+<a id="default-options" class="anchor" href="#default-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Default options</h4>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>These options are applied to all browsers, but can be overridden by the
+individual browser settings.</p>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<div class="highlight highlight-ruby"><pre>  config.default_options <span class="pl-k">=</span> {
+    <span class="pl-c1">os:</span> <span class="pl-s1"><span class="pl-pds">"</span>Windows<span class="pl-pds">"</span></span>,
+    <span class="pl-c1">start:</span> <span class="pl-s1"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span>,
+    <span class="pl-c1">speed:</span> <span class="pl-s1"><span class="pl-pds">"</span>2<span class="pl-pds">"</span></span>,
+    <span class="pl-c1">zoom_to_fit:</span> <span class="pl-s1"><span class="pl-pds">"</span>false<span class="pl-pds">"</span></span>,
+    <span class="pl-c1">resolution:</span> <span class="pl-s1"><span class="pl-pds">"</span>1024x768<span class="pl-pds">"</span></span>,
+    <span class="pl-c1">full_screen:</span> <span class="pl-s1"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span>,
+  }</pre></div>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<h4>
+<a id="configuring-browsers" class="anchor" href="#configuring-browsers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuring browsers</h4>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<div class="highlight highlight-ruby"><pre>  config.browsers[<span class="pl-s1"><span class="pl-pds">"</span>IE8<span class="pl-pds">"</span></span>] <span class="pl-k">=</span> { <span class="pl-c1">browser:</span> <span class="pl-s1"><span class="pl-pds">"</span>IE<span class="pl-pds">"</span></span>, <span class="pl-c1">browser_version:</span> <span class="pl-s1"><span class="pl-pds">"</span>8.0<span class="pl-pds">"</span></span>, <span class="pl-c1">os_version:</span> <span class="pl-s1"><span class="pl-pds">"</span>7<span class="pl-pds">"</span></span> }
+  config.browsers[<span class="pl-s1"><span class="pl-pds">"</span>IE9<span class="pl-pds">"</span></span>] <span class="pl-k">=</span> { <span class="pl-c1">browser:</span> <span class="pl-s1"><span class="pl-pds">"</span>IE<span class="pl-pds">"</span></span>, <span class="pl-c1">browser_version:</span> <span class="pl-s1"><span class="pl-pds">"</span>9.0<span class="pl-pds">"</span></span>, <span class="pl-c1">os_version:</span> <span class="pl-s1"><span class="pl-pds">"</span>7<span class="pl-pds">"</span></span> }
+  config.browsers[<span class="pl-s1"><span class="pl-pds">"</span>IE10<span class="pl-pds">"</span></span>] <span class="pl-k">=</span> { <span class="pl-c1">browser:</span> <span class="pl-s1"><span class="pl-pds">"</span>IE<span class="pl-pds">"</span></span>, <span class="pl-c1">browser_version:</span> <span class="pl-s1"><span class="pl-pds">"</span>10.0+Desktop<span class="pl-pds">"</span></span>, <span class="pl-c1">os_version:</span> <span class="pl-s1"><span class="pl-pds">"</span>8<span class="pl-pds">"</span></span> }
+  config.browsers[<span class="pl-s1"><span class="pl-pds">"</span>Firefox<span class="pl-pds">"</span></span>] <span class="pl-k">=</span> { <span class="pl-c1">browser:</span> <span class="pl-s1"><span class="pl-pds">"</span>Firefox<span class="pl-pds">"</span></span>, <span class="pl-c1">browser_version:</span> <span class="pl-s1"><span class="pl-pds">"</span>22.0<span class="pl-pds">"</span></span>, <span class="pl-c1">os_version:</span> <span class="pl-s1"><span class="pl-pds">"</span>7<span class="pl-pds">"</span></span> }
+  config.browsers[<span class="pl-s1"><span class="pl-pds">"</span>Safari<span class="pl-pds">"</span></span>] <span class="pl-k">=</span> { <span class="pl-c1">browser:</span> <span class="pl-s1"><span class="pl-pds">"</span>Safari<span class="pl-pds">"</span></span>, <span class="pl-c1">browser_version:</span> <span class="pl-s1"><span class="pl-pds">"</span>6.0<span class="pl-pds">"</span></span>, <span class="pl-c1">os:</span> <span class="pl-s1"><span class="pl-pds">"</span>OS X<span class="pl-pds">"</span></span>, <span class="pl-c1">os_version:</span> <span class="pl-s1"><span class="pl-pds">"</span>Mountain Lion<span class="pl-pds">"</span></span> }
+  config.browsers[<span class="pl-s1"><span class="pl-pds">"</span>Chrome<span class="pl-pds">"</span></span>] <span class="pl-k">=</span> { <span class="pl-c1">browser:</span> <span class="pl-s1"><span class="pl-pds">"</span>Chrome<span class="pl-pds">"</span></span>, <span class="pl-c1">browser_version:</span> <span class="pl-s1"><span class="pl-pds">"</span>28.0<span class="pl-pds">"</span></span>, <span class="pl-c1">os_version:</span> <span class="pl-s1"><span class="pl-pds">"</span>7<span class="pl-pds">"</span></span> }</pre></div>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Add the following just after your opening <code>&lt;body&gt;</code> tag:</p>
+
+<div class="highlight highlight-erb"><pre><span class="pl-pse">&lt;%=</span><span class="pl-s2"> browser_stack_button </span><span class="pl-pse"><span class="pl-s2">%</span>&gt;</span></pre></div>
+
+<p>If you want to enable it, likely only on a staging server, you can call
+call <code>BrowserStackButton.enable!</code> in a <code>before_filter</code> or in your controller
+action if you want to enable it in the current Rails environment.</p>
+
+<p>You could enable it on production for just admin users or whatever you like. We
+only use it on our staging server.</p>
+
+<p>Sometimes you need to add additional parameters to your site url that is
+visited by BrowserStack. We use this for a login backdoor on our staging server
+which allows us to view the page as the same user we are currently logged in
+as. To do this, pass an additional hash to <code>enable!</code>:</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-s3">BrowserStackButton</span>.enable! <span class="pl-k">do </span>|<span class="pl-vo">button</span>|
+  <span class="pl-c"># Add additional params to the url</span>
+  <span class="pl-k">if</span> user_signed_in?
+    button.url_params[<span class="pl-c1">:backdoor</span>] <span class="pl-k">=</span> current_user.email
+  <span class="pl-k">else</span>
+    button.url_params[<span class="pl-c1">:backdoor</span>] <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">"</span>anonymous<span class="pl-pds">"</span></span>
+  <span class="pl-k">end</span>
+
+  <span class="pl-c"># OR override the URL entirely</span>
+  browser.url <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">"</span>http://example.com<span class="pl-pds">"</span></span>
+<span class="pl-k">end</span></pre></div>
+
+<p>Once enabled, you should see a BrowserStack logo in the top left of the page.
+Click it to reveal a dropdown and select a browser. You will need to enable
+popups. When changing browsers, it is best to close the previous browser window
+before clicking the next one.</p>
+
+<h2>
+<a id="todo" class="anchor" href="#todo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Todo</h2>
+
+<ul>
+<li>Localhost/Tunnel support</li>
+<li>Extract more to javascript so it is usable outside of a Rails project.</li>
+</ul>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ol>
+<li>Fork it ( <a href="http://github.com/substantial/browser_stack_button/fork">http://github.com/substantial/browser_stack_button/fork</a> )</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
       </section>
     </div>
 
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">Browser stack button maintained by <a href="https://github.com/cmitchusa">cmitchusa</a></p>
+        <p class="copyright">Christopher Mitchell maintained by <a href="https://github.com/cmitchusa">cmitchusa</a></p>
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
